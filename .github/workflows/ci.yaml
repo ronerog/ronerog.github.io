@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Chekout do reposotório
-        use: actions/checkout@1
+        use: actions/checkout@v1
       - name: Deploy for my Hosting
         use: ronerog.github.io/ssh-deploy@main
         env:
