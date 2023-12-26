@@ -1,17 +1,18 @@
 name: ronero.com.br CI
+
 on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Chekout do reposotório
-        use: actions/checkout@v1
-      - name: Deploy for my Hosting
-        use: ronerog.github.io/ssh-deploy@main
+      - name: Checkout do repositório
+        uses: actions/checkout@v1
+      - name: Deploy to my Hosting
+        uses: ronerog/ronerog.github.io/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzvO --delete"
@@ -19,4 +20,4 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: ${{ srects.REMOTE_TARGET }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
